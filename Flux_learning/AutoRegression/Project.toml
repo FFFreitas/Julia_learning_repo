@@ -1,0 +1,4 @@
+name = "AutoRegression"
+uuid = "c667e967-2b07-4f86-8108-8e9194d37530"
+authors = ["Felipe Ferreira de Freitas <fp4303@gmail.com>"]
+version = "0.1.0"
