@@ -1,0 +1,4 @@
+name = "LinearRegression"
+uuid = "979930b8-dbd0-4947-a5f5-1806997300b6"
+authors = ["Felipe Ferreira de Freitas <fp4303@gmail.com>"]
+version = "0.1.0"
