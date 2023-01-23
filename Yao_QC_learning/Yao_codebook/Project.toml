@@ -1,0 +1,12 @@
+name = "Yao_codebook"
+uuid = "ab8c60e4-9304-4729-941c-0d30d0800a46"
+authors = ["Felipe Ferreira de Freitas <fp4303@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CuYao = "b48ca7a8-dd42-11e8-2b8e-1b7706800275"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+ImageInTerminal = "d8c32880-2388-543b-8c61-d9f865259254"
+UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
+Yao = "5872b779-8223-5990-8dd0-5abbb0748c8c"
+YaoPlots = "32cfe2d9-419e-45f2-8191-2267705d8dbc"
