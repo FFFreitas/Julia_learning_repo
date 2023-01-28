@@ -1,0 +1,13 @@
+name = "LS_EDF_QC"
+uuid = "994ee2ae-c497-4356-8178-18cf82ead40d"
+authors = ["Felipe Ferreira de Freitas <fp4303@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+BitBasis = "50ba71b6-fa0f-514d-ae9a-0916efc90dcf"
+CuYao = "b48ca7a8-dd42-11e8-2b8e-1b7706800275"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+Yao = "5872b779-8223-5990-8dd0-5abbb0748c8c"
+YaoPlots = "32cfe2d9-419e-45f2-8191-2267705d8dbc"
