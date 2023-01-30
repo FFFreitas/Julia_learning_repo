@@ -105,3 +105,32 @@ findfirst("a", "banana")
 
 findnext("na", "banana", 4)
 
+# The operator ∈
+
+'a' ∈ "banana"
+
+function inboth(word1, word2)
+    for letter ∈ word1
+        if letter ∈ word2
+            println(letter, " ")
+        end
+    end
+end
+
+inboth("banana", "castanha")
+
+
+# String comparison
+
+word = "Pineable"
+if word == "banana"
+    println("Alright, bananas")
+end
+
+if word < "banana"
+    println("Your word, $word, comes before banana")
+elseif word > "banana"
+    println("Your word, $word, comes after banana")
+else
+    println("Ok")
+end 
