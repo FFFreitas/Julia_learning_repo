@@ -67,3 +67,6 @@ for ϵ in [0.1, 0.01, 0.0]
             ]
     println("ϵ:$(ϵ) -> $(mean(x[2] for x in stats))")
 end
+"""
+continue -> https://juliareinforcementlearning.org/ReinforcementLearningAnIntroduction.jl/notebooks/Chapter02_Ten_Armed_Testbed.html
+"""
