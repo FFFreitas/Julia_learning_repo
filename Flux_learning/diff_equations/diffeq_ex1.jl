@@ -79,3 +79,4 @@ opt = Flux.ADAM(0.1)
 
 Flux.train!(loss_rd, params, data, opt)
 
+# https://github.com/jolin-io/fall-in-love-with-julia/blob/main/10%20SciML%20-%2001%20DiffEqFlux.ipynb

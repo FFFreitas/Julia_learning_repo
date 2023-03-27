@@ -24,6 +24,7 @@ marginal_prob_std(t, σ=25.0f0) = sqrt.((σ .^ (2t) .- 1.0f0) ./ 2.0f0 ./ log(σ
 struct Unet
     layers::NamedTuple
 end
+
 function Unet(channels=[1<<i for i in 5:8], embed_dim=256, scale=30.0f0)
     return Unet((
                  gaussfourierproj = GaussianFourierProjection(embd_dim, scale),
@@ -133,5 +134,30 @@ Base.@kwdef mutable struct Args
     save_path = "output"                            # results path
 end
 
-function train(; kws)
+
+function train(; kws...)
+    # load hyperparameters
+    args = Args(; kws...)
+    args.seed > 0 && Random.seed!(args.seed)
+
+    # GPU config
+    if args.cuda && CUDA.has_cuda
+        device = gpu
+        @info "Training on GPU"
+    else
+        device = cpu
+        @info "Training on CPU :("
+    end
+
+    # load MNIST 
+    loader = get_data(args.batch_size)
+
+    # initialize Unet model
+    unet = Unet() |> device
+
+    # ADAM opt
+    opt = ADAM(args.η)
+
+    # parameters
+    ps
 
