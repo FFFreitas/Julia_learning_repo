@@ -161,3 +161,4 @@ function train(; kws...)
     # parameters
     ps
 
+    # https://github.com/FluxML/model-zoo/blob/master/vision/diffusion_mnist/diffusion_mnist.jl
