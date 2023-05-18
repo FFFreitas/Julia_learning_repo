@@ -21,7 +21,7 @@ function sinc(x)::Float64
     sin(x)/(x)
 end
 
-struct MyTime
+mutable struct MyTime
     hour::Int64
     minute::Int64
     second::Int64
@@ -56,7 +56,7 @@ function MyTime(time::MyTime)
 end
 
 
-struct MyTime
+mutable struct MyTime
     hour::Int64
     minute::Int64
     second::Int64
@@ -67,6 +67,20 @@ struct MyTime
     end
 end
 
+mutable struct MyTime
+    hour::Int64
+    minute::Int64
+    second::Int64
+    function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
+        @assert(0 ≤ minute < 60, "Minutes must be between 0 and 60.")
+        @assert(0 ≤ second < 60, "Secobds must be between 0 and 60.")
+        time = new()
+        time.hour = hour
+        time.minute = minute
+        time.second = second
+        time
+    end
+end
 # Show me what you got
 
 function Base.show(io::IO, time::MyTime)

@@ -11,12 +11,26 @@ time = MyTime(08, 19, 25)
 
 # ex1
 
+
 function printtime(time)
     println("$(@sprintf("%02d", time.hour)) : $(@sprintf("%02d", time.minute)) : $(@sprintf("%02d", time.second))")
 end
 
 printtime(time)
 
+function isafter(t1, t2)
+    c1 = (t1.hour < t2.hour) ? true : false
+    c2 = (t1.hour == t2.hour) && (t1.minute < t2.minute)  ? true : false
+    c3 = (t1.hour == t2.hour) && (t1.minute == t2.minute) && (t1.second < t2.second)  ? true : false
+
+    c1 || c2 || c3
+end
+
+
+t1 = MyTime(12,01,01)
+t2 = MyTime(10,01,02)
+
+isafter(t1, t2)
 
 function addtime(t1, t2)
     MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
@@ -55,6 +69,16 @@ function increment!(time, seconds)
         time.hour += 1
     end
 end
+
+#ex 16.3
+function increment_noloop!(time, seconds)
+    time.second += seconds
+    time.second ≥ 60 ? time.second -= 60 : nothing
+    time.second ≥ 60 ? time.minute += 1 : nothing
+    time.minute ≥ 60 ? time.minute -= 60 : nothing
+    time.minute ≥ 60 ? time.minute += 1 : nothing
+end
+
  
 ########
 
