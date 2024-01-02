@@ -141,4 +141,64 @@ end
 
 # Deleting (Inserting) Elements
 
+t = ['a', 'b', 'c']
+
+@show splice!(t, 2)
+@show t
+
+# splice! modifies the array and returns the element that was removed.
+# pop! deletes and returns the last element:
+
+t = ['a', 'b', 'c']
+@show pop!(t)
+@show t
+
+# popfirst! deletes and returns the first element:
+
+t = ['a', 'b', 'c']
+@show popfirst!(t)
+@show t
+
+# The functions pushfirst! and push! insert an element at the beginning, respectively at the end of the array.
+
+t = ['a', 'b', 'c']
+@show pushfirst!(t, 'z')
+@show push!(t, 'Z')
+@show t
+
+# If you don’t need the removed value, you can use the function deleteat! 
+
+t = ['a', 'b', 'c']
+@show deleteat!(t, 2)
+@show t
+
+# The function insert! inserts an element at a given index
+
+t = ['a', 'b', 'c']
+@show insert!(t, 2, 'x')
+@show t
+
+# Arrays and Strings
+
+t = collect("spam")
+@show t
+
+# The collect function breaks a string or another sequence into individual elements.
+# If you want to break a string into words, you can use the split function
+
+t = split("pining for the fjords")
+@show t
+
+# An optional argument called a delimiter specifies which characters to use as word boundaries.
+
+t = split("spam-spam-spam", '-')
+@show t
+
+# join is the inverse of split . It takes an array of strings and concatenates the elements
+
+t = ["pining", "for", "the", "fjords"]
+s = join(t, ' ')
+@show s
+
+# Objects and Values
 
