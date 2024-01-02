@@ -202,3 +202,158 @@ s = join(t, ' ')
 
 # Objects and Values
 
+a = "banana"
+b = "banana"
+
+@show a ≡ b
+
+a = [1,2,3]
+b = [1,2,3]
+
+@show a ≡ b
+
+# Aliasing
+
+a = [1,2,3]
+b = a
+
+@show b ≡ a
+
+# If the aliased object is mutable, changes made with one alias affect the other:
+@show b[1] = 42
+@show a
+
+# For immutable objects like strings, aliasing is not as much of a problem. In this example:
+
+a = "banana"
+b = "banana"
+
+# Array Arguments
+
+function deletehead!(t)
+    popfirst!(t)
+end
+
+letters = ['a', 'b', 'c']
+t = letters
+@show deletehead!(letters)
+@show letters
+@show t
+
+t1 = [1, 2]
+t2 = push!(t1, 3)
+@show t1
+@show t2
+
+t3 = vcat(t1, [4])
+
+@show t1
+@show t3
+
+# Exercises
+# Exercise 10-1
+# Write a function called nestedsum that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
+#
+t = [[1, 2], [3], [4, 5, 6]]
+
+
+function nestedsum(t)
+    flat = reduce(vcat, t)
+    sum(flat)
+end
+
+@show nestedsum(t)
+
+# Exercise 10-2
+# Write a function called cumulsum that takes an array of numbers and returns the cumulative sum; that is, a new array where the ith element is the sum of the first i elements from the original array. For example:
+
+function cumulsum(t)
+    res = 0
+    final = []
+    for i in eachindex(t)
+        res += t[i]
+        push!(final, res)
+    end
+    final
+end
+
+t = [1, 2, 3]
+
+cumulsum(t)
+
+# Exercise 10-3
+# Write a function called interior that takes an array and returns a new array that contains all but the first and last elements. For example:
+
+
+function interior(t)
+    tt = copy(t)
+    deleteat!(tt, 1)
+    pop!(tt)
+    tt
+end
+
+t = [1, 2, 3, 4]
+interior(t)
+
+
+# Exercise 10-4
+# Write a function called interior! that takes an array, modifies it by removing the first and last elements, and returns nothing .
+
+t = [1, 2, 3, 4]
+
+function interior!(t)
+    deleteat!(t, 1)
+    pop!(t)
+end
+
+interior!(t)
+@show t
+
+# Exercise 10-5
+# Write a function called issort that takes an array as a parameter and returns true if the array is sorted in ascending order and false otherwise.
+
+?sort
+
+function issort(t)
+    @show t == sort(t)
+end
+
+issort([1, 2, 2])
+issort(['b', 'a'])
+
+# Exercise 10-6
+# Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called isanagram that takes two strings and returns true if they are anagrams.
+
+function isanagram(t1, t2)
+    @show sort(collect(t1)) == sort(collect(t2))
+end
+
+function isanagram_freq(t1, t2, size=256)
+    a1 = zeros(size)
+    b2 = zeros(size)
+    for c1 in collect(t1)
+        index = Int(codepoint(c1))
+        a1[index] = 1.0
+    end
+    for c2 in collect(t2)
+        index = Int(codepoint(c2))
+        b2[index] = 1.0
+    end
+
+    if length(t1) != length(t2)
+        return false
+    end
+
+    for i in 1:size
+        if a1[i] != b2[i]
+            return false
+        end
+    end
+    return true
+end
+
+isanagram("listen", "silent")
+isanagram_freq("ana", "banana")
+
+# Exercise 10-7
+# Write a function called hasduplicates that takes an array and returns true if there is any element that appears more than once. It should not modify the original array.
