@@ -357,3 +357,43 @@ isanagram_freq("ana", "banana")
 
 # Exercise 10-7
 # Write a function called hasduplicates that takes an array and returns true if there is any element that appears more than once. It should not modify the original array.
+
+?Set
+
+a = Array([1, 1, 2, 3, 4])
+
+collect("Banana")
+
+b = Array(collect("Banana"))
+
+hasduplicates(b)
+
+function hasduplicates(arr::T) where T
+    no_duplicates = Set(arr)
+    length(arr) != length(no_duplicates)
+end
+
+# Exercise 10-8
+# This exercise pertains to the so-called Birthday Paradox, which you can read about at https://en.wikipedia.org/wiki/Birthday_paradox.
+
+#If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches.
+
+birthdays = rand(1:365, (23))
+
+?count
+
+B = hcat([[i, count(==(i), birthdays)] for i in unique(birthdays)]...)
+
+counts = length(findall(>(1), B[2,:]))
+
+findall(>(1), B[2,:])
+
+counts/23
+
+p = 1 - ((365 - 1)/365)^(23*22/2)
+
+n = sqrt(2*365*log(ℯ, 1/(1-p)))
+
+
+
+
